@@ -22,7 +22,7 @@ API_ID = int(environ.get("API_ID", "27710337"))
 API_HASH = environ.get("API_HASH", "354e1dd8e1e3041ee2145196da8d6aac")
 BOT_TOKEN = environ.get("BOT_TOKEN", "7232894228:AAHmqh2JjJi86rNisO0GnZSQlblWAQPMxqg")
 
-PICS = (environ.get('PICS', 'https://telegra.ph/file/b804eca08f8e8395e28ef.jpg')).split() # Bot Start Picture
+PICS = (environ.get('PICS', 'https://graph.org/file/b804eca08f8e8395e28ef.jpg')).split() # Bot Start Picture
 ADMINS = [int(admin) if id_pattern.search(admin) else admin for admin in environ.get('ADMINS', '6025969005').split()]
 BOT_USERNAME = environ.get("BOT_USERNAME", "Movie_Market_Files_Bot") # without @
 PORT = environ.get("PORT", "8080")
