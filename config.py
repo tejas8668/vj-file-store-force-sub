@@ -22,7 +22,7 @@ API_ID = int(environ.get("API_ID", "27710337"))
 API_HASH = environ.get("API_HASH", "354e1dd8e1e3041ee2145196da8d6aac")
 BOT_TOKEN = environ.get("BOT_TOKEN", "7232894228:AAHmqh2JjJi86rNisO0GnZSQlblWAQPMxqg")
 
-PICS = (environ.get('PICS', 'https://telegra.ph/file/7e56d907542396289fee4.jpg')).split() # Bot Start Picture
+PICS = (environ.get('PICS', 'https://telegra.ph/file/b804eca08f8e8395e28ef.jpg')).split() # Bot Start Picture
 ADMINS = [int(admin) if id_pattern.search(admin) else admin for admin in environ.get('ADMINS', '6025969005').split()]
 BOT_USERNAME = environ.get("BOT_USERNAME", "Movie_Market_Files_Bot") # without @
 PORT = environ.get("PORT", "8080")
@@ -59,8 +59,8 @@ PUBLIC_FILE_STORE = is_enabled((environ.get('PUBLIC_FILE_STORE', "True")), True)
 VERIFY_MODE = bool(environ.get('VERIFY_MODE', True)) # Set True or False
 
 # If Verify Mode Is True Then Fill All Required Variable, If False Then Don't Fill.
-SHORTLINK_URL = environ.get("SHORTLINK_URL", "adrinolinks.in") # shortlink domain without https://
-SHORTLINK_API = environ.get("SHORTLINK_API", "599ee2c148d46fe9061578db049f3cd32f528bf6") # shortlink api
+SHORTLINK_URL = environ.get("SHORTLINK_URL", "gplinks.com") # shortlink domain without https://
+SHORTLINK_API = environ.get("SHORTLINK_API", "89e6e36b347f3db3f187dda37290c5927e99c18a") # shortlink api
 VERIFY_TUTORIAL = environ.get("VERIFY_TUTORIAL", "https://t.me/how_to_download_0011") # how to open link 
 
 # Website Info:
