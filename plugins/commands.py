@@ -106,14 +106,14 @@ async def start(client, message):
 
 
     @app.on_message(filters.regex("join_request") & filters.private)
-async def handle_join_request(client, message):
-    user_id = message.from_user.id
-
-    for channel in AUTH_CHANNEL:
-        if not await is_subscribed(client, user_id, channel):
-            chat = await client.get_chat(channel)
-            await message.reply_text(f"Your request to join {chat.title} has been sent. Please wait for approval.")
-            return
+    async def handle_join_request(client, message):
+        user_id = message.from_user.id
+        
+        for channel in AUTH_CHANNEL:
+            if not await is_subscribed(client, user_id, channel):
+                chat = await client.get_chat(channel)
+                await message.reply_text(f"Your request to join {chat.title} has been sent. Please wait for approval.")
+                return
 
 
 # Don't Remove Credit Tg - @VJ_Botz
