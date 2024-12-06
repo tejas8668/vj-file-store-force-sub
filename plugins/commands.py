@@ -70,7 +70,12 @@ async def start(client, message):
                     btn.append([InlineKeyboardButton("♻️ Try Again ♻️", url=f"https://t.me/{username}?start={message.command[1]}")])
                 else:
                     btn.append([InlineKeyboardButton("♻️ Try Again ♻️", url=f"https://t.me/{username}?start=true")])
-                await message.reply_text(text=f"<b>👋 Hello {message.from_user.mention},\n\nPlease join the channel then click on try again button. 😇</b>", reply_markup=InlineKeyboardMarkup(btn))
+                await message.reply_text(text=f"<b>👋 Hello {message.from_user.mention},\n\nPlease request to join the channel then click on try again button. 😇</b>", reply_markup=InlineKeyboardMarkup(btn))
+                
+                # Notify admin about the join request
+                if ADMINS:
+                    for admin in ADMINS:
+                        await client.send_message(admin, f"User {message.from_user.mention} requested to join the channel. Please approve.")
                 return
         except Exception as e:
             print(e)
@@ -98,6 +103,18 @@ async def start(client, message):
             reply_markup=reply_markup
         )
         return
+
+
+    @app.on_message(filters.regex("join_request") & filters.private)
+async def handle_join_request(client, message):
+    user_id = message.from_user.id
+
+    for channel in AUTH_CHANNEL:
+        if not await is_subscribed(client, user_id, channel):
+            chat = await client.get_chat(channel)
+            await message.reply_text(f"Your request to join {chat.title} has been sent. Please wait for approval.")
+            return
+
 
 # Don't Remove Credit Tg - @VJ_Botz
 # Subscribe YouTube Channel For Amazing Bot https://youtube.com/@Tech_VJ
