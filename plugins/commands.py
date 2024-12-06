@@ -33,8 +33,8 @@ async def is_subscribed(bot, query, channel):
             await bot.get_chat_member(id, query.from_user.id)
         except UserNotParticipant:
             # Generate an invite link for the channel using the bot's admin privileges
-            invite_link = await bot.export_chat_invite_link(chat.id)
-            btn.append([InlineKeyboardButton(f'Request to Join {chat.title}', url=invite_link)])
+            invite_link = await bot.create_chat_invite_link(chat.id, require_approval=True)
+            btn.append([InlineKeyboardButton(f'Request to Join {chat.title}', url=invite_link.invite_link)])
         except Exception as e:
             pass
     return btn
