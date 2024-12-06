@@ -32,11 +32,13 @@ async def is_subscribed(bot, query, channel):
         try:
             await bot.get_chat_member(id, query.from_user.id)
         except UserNotParticipant:
-            # Instead of join button, we are now adding a request to join button
-            btn.append([InlineKeyboardButton(f'Request to Join {chat.title}', url=f"https://t.me/{chat.username}?start=join_request")])
+            # Generate an invite link for the channel using the bot's admin privileges
+            invite_link = await bot.export_chat_invite_link(chat.id)
+            btn.append([InlineKeyboardButton(f'Request to Join {chat.title}', url=invite_link)])
         except Exception as e:
             pass
     return btn
+
 
 # Don't Remove Credit Tg - @VJ_Botz
 # Subscribe YouTube Channel For Amazing Bot https://youtube.com/@Tech_VJ
